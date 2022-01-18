@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -8,9 +10,22 @@ public class Main {
         int menuEscolha = 0;
         boolean execucao = true;
 
+        Loja loja;
+
+        List<Usuario> melhoresVendedores = new ArrayList<Usuario>();
+        melhoresVendedores.add(new UsuarioComum("Joao Carlos", "jc@heaven.com", "1234", "1984-12-02"));
+        melhoresVendedores.add(new UsuarioComum("Andrilei Andreas", "aa@oreon.com", "12345", "1994-11-26"));
+
+        List<Produto> produtos = new ArrayList<Produto>();
+        produtos.add(new Produto("Camiseta", 45.6f, melhoresVendedores.get(0)));
+        produtos.add(new Produto("Copo Personalizado", 61.2f, melhoresVendedores.get(1)));
+        produtos.add(new Produto("Capa Celular", 22.7f, melhoresVendedores.get(0)));
+
         while (execucao) {
             System.out.println("\n[1] - Adicionar usuário no BD");
             System.out.println("[2] - Recuperar usuário no BD");
+            System.out.println("[3] - Adicionar produtos na loja");
+            System.out.println("[4] - Adicionar melhores vendedores na loja");
             System.out.println("[99] - Encerrar programa");
             System.out.print("Informe sua escolha: ");
             menuEscolha = sc.nextInt();
@@ -50,6 +65,22 @@ public class Main {
                         System.err.println("Não consegui recuperar o usuário " + nome + "!");
                         System.err.println(e.getMessage());
                         System.out.println();
+                    }
+                    break;
+                case 3:
+                    loja = Loja.criaComProdutos(produtos);
+                    System.out.println("Referência objeto loja - " + loja);
+                    System.out.println("\n--- Produtos adicionados na loja ---");
+                    for (Produto p : loja.getProdutos()) {
+                        System.out.println("Produto: " + p.getNome());
+                    }
+                    break;
+                case 4:
+                    loja = Loja.criaComMelhoresVendedores(melhoresVendedores);
+                    System.out.println("Referência objeto loja - " + loja);
+                    System.out.println("\n--- Melhores vendedores da loja ---");
+                    for (Usuario vendedor : loja.getMelhoresVendedores()) {
+                        System.out.println("Vendedor: " + vendedor.getNome());
                     }
                     break;
                 case 99:
