@@ -17,4 +17,9 @@ public class UsuarioComum extends Usuario {
     public void setPublicacoes(List<Publicacao> publicacoes) {
         this.publicacoes = publicacoes;
     }
+
+    @Override
+    public String toString() {
+        return "UsuarioComum";
+    }
 }
