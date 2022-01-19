@@ -21,12 +21,16 @@ public class Main {
         produtos.add(new Produto("Copo Personalizado", 61.2f, melhoresVendedores.get(1)));
         produtos.add(new Produto("Capa Celular", 22.7f, melhoresVendedores.get(0)));
 
+        UsuarioComum daniel = new UsuarioComum("Daniel", "daniel@email.com", "1234", "2000-07-08");
+
         while (execucao) {
             System.out.println("\n[1] - Adicionar usuário no BD");
             System.out.println("[2] - Recuperar usuário no BD");
             System.out.println("[3] - Adicionar produtos na loja");
             System.out.println("[4] - Adicionar melhores vendedores na loja");
             System.out.println("[5] - Criar publicacao");
+            System.out.println("[6] - Adicionar amigo");
+            System.out.println("[7] - Remover amigo");
             System.out.println("[99] - Encerrar programa");
             System.out.print("Informe sua escolha: ");
             menuEscolha = sc.nextInt();
@@ -96,6 +100,22 @@ public class Main {
                     Publicacao p = new Publicacao().criadaPor((UsuarioComum) melhoresVendedores.get(id)).publicadaEm("hoje").entitulada("Vejam esse meme que legal! HAHA").conteudo("Lorem ipsum...");
                     System.out.println();
                     System.out.println(p.toString());
+                    break;
+                case 6:
+                    System.out.println("\n--- Usuários ---");
+                    for (int i = 0; i < melhoresVendedores.size(); i++) {
+                        System.out.println("ID: " + i + " Nome: " + melhoresVendedores.get(i).getNome());
+                    }
+                    System.out.print("\nInforme o ID de quem sera adicionado como amigo: ");
+                    int id2 = sc.nextInt();
+                    sc.nextLine();
+
+                    daniel.adicionarAmigo(melhoresVendedores.get(id2).getNome());
+
+                    break;
+                case 7:
+                    System.out.print("\nVocê está removendo o último amigo adicionado...");
+                    daniel.removerAmigo();
                     break;
                 case 99:
                     System.out.println("\nFinalizando o programa...");
