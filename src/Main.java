@@ -26,6 +26,7 @@ public class Main {
             System.out.println("[2] - Recuperar usuário no BD");
             System.out.println("[3] - Adicionar produtos na loja");
             System.out.println("[4] - Adicionar melhores vendedores na loja");
+            System.out.println("[5] - Criar publicacao");
             System.out.println("[99] - Encerrar programa");
             System.out.print("Informe sua escolha: ");
             menuEscolha = sc.nextInt();
@@ -82,6 +83,19 @@ public class Main {
                     for (Usuario vendedor : loja.getMelhoresVendedores()) {
                         System.out.println("Vendedor: " + vendedor.getNome());
                     }
+                    break;
+                case 5:
+                    System.out.println("\n--- Usuários ---");
+                    for (int i = 0; i < melhoresVendedores.size(); i++) {
+                        System.out.println("ID: " + i + " Nome: " + melhoresVendedores.get(i).getNome());
+                    }
+                    System.out.print("\nInforme o ID de quem será o criador da publicacao: ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+
+                    Publicacao p = new Publicacao().criadaPor((UsuarioComum) melhoresVendedores.get(id)).publicadaEm("hoje").entitulada("Vejam esse meme que legal! HAHA").conteudo("Lorem ipsum...");
+                    System.out.println();
+                    System.out.println(p.toString());
                     break;
                 case 99:
                     System.out.println("\nFinalizando o programa...");

@@ -4,11 +4,24 @@ public class Publicacao {
     private String dataPublicacao;
     private UsuarioComum criador;
 
-    public Publicacao(String titulo, String conteudo, String dataPublicacao, UsuarioComum criador) {
+    public Publicacao entitulada(String titulo) {
         this.titulo = titulo;
+        return this;
+    }
+
+    public Publicacao conteudo(String conteudo) {
         this.conteudo = conteudo;
+        return this;
+    }
+
+    public  Publicacao publicadaEm(String dataPublicacao) {
         this.dataPublicacao = dataPublicacao;
+        return this;
+    }
+
+    public Publicacao criadaPor(UsuarioComum criador) {
         this.criador = criador;
+        return this;
     }
 
     public String getTitulo() {
@@ -41,5 +54,15 @@ public class Publicacao {
 
     public void setCriador(UsuarioComum criador) {
         this.criador = criador;
+    }
+
+    @Override
+    public String toString() {
+        return "Publicacao{" +
+                "titulo='" + titulo + '\'' +
+                ", conteudo='" + conteudo + '\'' +
+                ", dataPublicacao='" + dataPublicacao + '\'' +
+                ", criador=" + criador.getNome() +
+                '}';
     }
 }
