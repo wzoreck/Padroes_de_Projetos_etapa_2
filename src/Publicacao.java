@@ -24,6 +24,9 @@ public class Publicacao {
         return this;
     }
 
+    public void addPropriedades(Perfil perfil) {
+    }
+
     public String getTitulo() {
         return titulo;
     }
