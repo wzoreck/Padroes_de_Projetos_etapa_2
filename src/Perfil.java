@@ -16,6 +16,18 @@ public class Perfil {
         getPropriedades().put(tipo, getPropriedades().get(tipo) + valor);
     }
 
+    public double getTotalPublicacoes() {
+        return getPropriedades().get(PropriedadesPerfil.PUBLICACAO);
+    }
+
+    public double getTotalStatus() {
+        return getPropriedades().get(PropriedadesPerfil.STATUS);
+    }
+
+    public double getTotalStory() {
+        return getPropriedades().get(PropriedadesPerfil.STATUS);
+    }
+
     private List<Publicacao> getPublicacoes() {
         if (publicacoes == null)
             publicacoes = new ArrayList<Publicacao>();

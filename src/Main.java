@@ -23,6 +23,15 @@ public class Main {
 
         UsuarioComum daniel = new UsuarioComum("Daniel", "daniel@email.com", "1234", "2000-07-08");
 
+        List<Usuario> todosAmigos = new ArrayList<Usuario>();
+        UsuarioComum jonas = new UsuarioComum("Jonas", "melodojonas@oficial.com", "1234", "2000-01-03");
+        todosAmigos.add(new UsuarioComum("Ana", "ana@email.com", "1234", "2000-01-01"));
+        todosAmigos.add(new UsuarioComum("Marcos", "marcos@email.com", "1234", "2000-01-02"));
+        todosAmigos.add(jonas);
+
+        List<Usuario> amigosProximos = new ArrayList<Usuario>();
+        amigosProximos.add(jonas);
+
         while (execucao) {
             System.out.println("\n[1] - Adicionar usuário no BD");
             System.out.println("[2] - Recuperar usuário no BD");
@@ -31,6 +40,7 @@ public class Main {
             System.out.println("[5] - Criar publicacao");
             System.out.println("[6] - Adicionar amigo");
             System.out.println("[7] - Remover amigo");
+            System.out.println("[8] - Criar publicacao");
             System.out.println("[99] - Encerrar programa");
             System.out.print("Informe sua escolha: ");
             menuEscolha = sc.nextInt();
@@ -116,6 +126,47 @@ public class Main {
                 case 7:
                     System.out.print("\nVocê está removendo o último amigo adicionado...");
                     daniel.removerAmigo();
+                    break;
+                case 8:
+                    System.out.println("\n--- Criar publicacao ---");
+                    System.out.println("\n[0] - Publicacao Pública");
+                    System.out.println("[1] - Publicacao Privada");
+                    System.out.print("Informe sua escolha: ");
+                    int escolhaPublicacao = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("\n--- Tipo de publicacao ---");
+                    System.out.println("[7] - Publicacao Comum");
+                    System.out.println("[8] - Status");
+                    System.out.println("[9] - Story");
+                    System.out.print("Informe sua escolha: ");
+                    int tipoPublicacao = sc.nextInt();
+                    sc.nextLine();
+
+                    Perfil perfil = new Perfil();
+
+                    if (escolhaPublicacao == 0) {
+                        if(tipoPublicacao == 7) {
+
+                        } else if (tipoPublicacao == 8) {
+
+                        } else if (tipoPublicacao == 9) {
+
+                        }
+                    } else if (escolhaPublicacao == 1) {
+                        if(tipoPublicacao == 7) {
+                            PublicacaoPrivada pp = new PublicacaoPrivada(amigosProximos, PropriedadesPerfil.PUBLICACAO);
+                            perfil.addPublicacao(pp);
+                        } else if (tipoPublicacao == 8) {
+                            PublicacaoPrivada pp = new PublicacaoPrivada(amigosProximos, PropriedadesPerfil.STATUS);
+                            perfil.addPublicacao(pp);
+                        } else if (tipoPublicacao == 9) {
+                            PublicacaoPrivada pp = new PublicacaoPrivada(amigosProximos, PropriedadesPerfil.STORY);
+                            perfil.addPublicacao(pp);
+                        }
+                    }
+                    System.out.println("\nTotal de Publicacoes Comuns: " + perfil.getTotalPublicacoes());
+                    System.out.println("Total de Status: " + perfil.getTotalStatus());
+                    System.out.println("Total de Story: " + perfil.getTotalStory());
                     break;
                 case 99:
                     System.out.println("\nFinalizando o programa...");
