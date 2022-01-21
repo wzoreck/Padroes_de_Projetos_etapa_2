@@ -43,6 +43,7 @@ public class Main {
             System.out.println("[6] - Adicionar amigo");
             System.out.println("[7] - Remover amigo");
             System.out.println("[8] - Criar publicacao");
+            System.out.println("[9] - Criar objetos iniciais");
             System.out.println("[99] - Encerrar programa");
             System.out.print("Informe sua escolha: ");
             menuEscolha = sc.nextInt();
@@ -171,6 +172,16 @@ public class Main {
                     perfil.getTotalPublicacoes();
                     perfil.getTotalStatus();
                     perfil.getTotalStory();
+                    break;
+                case 9:
+                    CriardorObjetos criardorObjetos = new CriardorObjetos();
+                    Loja loja1 = criardorObjetos.criarLoja(new ArrayList<Produto>());
+                    UsuarioComum uc = criardorObjetos.criarUsuarioComum("teste", "teste@email.com", "1234", "2000-01-01");
+                    UsuarioAdmin ua = criardorObjetos.criarUsuarioAdmin("Teste", "teste@gmail.com", "1234", "2000-01-02");
+                    PublicacaoPrivada pv = criardorObjetos.criarPublicacaoPrivada(new ArrayList<Usuario>(), PropriedadesPerfil.PUBLICACAO);
+                    PublicacaoPublica pp = criardorObjetos.criarPublicacaoPublica(new ArrayList<Usuario>(), PropriedadesPerfil.PUBLICACAO);
+                    Produto prod = criardorObjetos.criarProduto("Agua", 20.5f, new UsuarioComum("Richard", "sdfa@gmail.com", "23423", "2000-01-01"));
+                    System.out.println("\nObjetos criados com sucesso!");
                     break;
                 case 99:
                     System.out.println("\nFinalizando o programa...");
