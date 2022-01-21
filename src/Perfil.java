@@ -16,16 +16,16 @@ public class Perfil {
         getPropriedades().put(tipo, getPropriedades().get(tipo) + valor);
     }
 
-    public double getTotalPublicacoes() {
-        return getPropriedades().get(PropriedadesPerfil.PUBLICACAO);
+    public void getTotalPublicacoes() {
+        System.out.println("Total Publicacoes Comuns: " + getPropriedades().get(PropriedadesPerfil.PUBLICACAO));
     }
 
-    public double getTotalStatus() {
-        return getPropriedades().get(PropriedadesPerfil.STATUS);
+    public void getTotalStatus() {
+        System.out.println("Total Status: " + getPropriedades().get(PropriedadesPerfil.STATUS));
     }
 
-    public double getTotalStory() {
-        return getPropriedades().get(PropriedadesPerfil.STATUS);
+    public void getTotalStory() {
+        System.out.println("Total Story: " + getPropriedades().get(PropriedadesPerfil.STORY));
     }
 
     private List<Publicacao> getPublicacoes() {

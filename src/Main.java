@@ -32,6 +32,8 @@ public class Main {
         List<Usuario> amigosProximos = new ArrayList<Usuario>();
         amigosProximos.add(jonas);
 
+        Perfil perfil = new Perfil();
+
         while (execucao) {
             System.out.println("\n[1] - Adicionar usuário no BD");
             System.out.println("[2] - Recuperar usuário no BD");
@@ -142,31 +144,33 @@ public class Main {
                     int tipoPublicacao = sc.nextInt();
                     sc.nextLine();
 
-                    Perfil perfil = new Perfil();
-
                     if (escolhaPublicacao == 0) {
                         if(tipoPublicacao == 7) {
-
+                            PublicacaoPublica pb = new PublicacaoPublica(amigosProximos, PropriedadesPerfil.PUBLICACAO);
+                            perfil.addPublicacao(pb);
                         } else if (tipoPublicacao == 8) {
-
+                            PublicacaoPublica pb = new PublicacaoPublica(amigosProximos, PropriedadesPerfil.STATUS);
+                            perfil.addPublicacao(pb);
                         } else if (tipoPublicacao == 9) {
-
+                            PublicacaoPublica pb = new PublicacaoPublica(amigosProximos, PropriedadesPerfil.STORY);
+                            perfil.addPublicacao(pb);
                         }
                     } else if (escolhaPublicacao == 1) {
                         if(tipoPublicacao == 7) {
-                            PublicacaoPrivada pp = new PublicacaoPrivada(amigosProximos, PropriedadesPerfil.PUBLICACAO);
-                            perfil.addPublicacao(pp);
+                            PublicacaoPrivada pv = new PublicacaoPrivada(amigosProximos, PropriedadesPerfil.PUBLICACAO);
+                            perfil.addPublicacao(pv);
                         } else if (tipoPublicacao == 8) {
-                            PublicacaoPrivada pp = new PublicacaoPrivada(amigosProximos, PropriedadesPerfil.STATUS);
-                            perfil.addPublicacao(pp);
+                            PublicacaoPrivada pv = new PublicacaoPrivada(amigosProximos, PropriedadesPerfil.STATUS);
+                            perfil.addPublicacao(pv);
                         } else if (tipoPublicacao == 9) {
-                            PublicacaoPrivada pp = new PublicacaoPrivada(amigosProximos, PropriedadesPerfil.STORY);
-                            perfil.addPublicacao(pp);
+                            PublicacaoPrivada pv = new PublicacaoPrivada(amigosProximos, PropriedadesPerfil.STORY);
+                            perfil.addPublicacao(pv);
                         }
                     }
-                    System.out.println("\nTotal de Publicacoes Comuns: " + perfil.getTotalPublicacoes());
-                    System.out.println("Total de Status: " + perfil.getTotalStatus());
-                    System.out.println("Total de Story: " + perfil.getTotalStory());
+                    System.out.println();
+                    perfil.getTotalPublicacoes();
+                    perfil.getTotalStatus();
+                    perfil.getTotalStory();
                     break;
                 case 99:
                     System.out.println("\nFinalizando o programa...");

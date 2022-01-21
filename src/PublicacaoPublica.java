@@ -9,7 +9,6 @@ public class PublicacaoPublica extends Publicacao {
         this.tipo = tipo;
     }
 
-    @Override
     public void addPropriedades(Perfil perfil) {
         perfil.addPropriedade(this.tipo, 1);
     }

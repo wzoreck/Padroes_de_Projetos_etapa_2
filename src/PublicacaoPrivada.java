@@ -1,3 +1,4 @@
+import javax.swing.plaf.synth.SynthDesktopIconUI;
 import java.util.List;
 
 public class PublicacaoPrivada extends Publicacao {
@@ -9,8 +10,9 @@ public class PublicacaoPrivada extends Publicacao {
         this.tipo = tipo;
     }
 
-    @Override
     public void addPropriedades(Perfil perfil) {
+        System.out.println();
+        System.out.println(tipo);
         perfil.addPropriedade(this.tipo, 1);
     }
 }
