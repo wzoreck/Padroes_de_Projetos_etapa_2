@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Publicacao {
     private String titulo;
     private String conteudo;
     private String dataPublicacao;
     private UsuarioComum criador;
+    private List<Etiqueta> etiquetas;
 
     public Publicacao entitulada(String titulo) {
         this.titulo = titulo;
@@ -57,6 +61,20 @@ public class Publicacao {
 
     public void setCriador(UsuarioComum criador) {
         this.criador = criador;
+    }
+
+    public List<Etiqueta> getEtiquetas() {
+        return etiquetas;
+    }
+
+    public void setEtiquetas(List<Etiqueta> etiquetas) {
+        this.etiquetas = etiquetas;
+    }
+
+    public void setEtiqueta(Etiqueta etiqueta) {
+        if (etiquetas == null)
+            etiquetas = new ArrayList<Etiqueta>();
+        this.etiquetas.add(etiqueta);
     }
 
     @Override

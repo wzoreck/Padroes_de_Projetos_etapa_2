@@ -34,6 +34,8 @@ public class Main {
 
         Perfil perfil = new Perfil();
 
+        Publicacao publicacaoTeste = new PublicacaoPrivada(amigosProximos, PropriedadesPerfil.PUBLICACAO);
+
         while (execucao) {
             System.out.println("\n[1] - Adicionar usuário no BD");
             System.out.println("[2] - Recuperar usuário no BD");
@@ -44,6 +46,7 @@ public class Main {
             System.out.println("[7] - Remover amigo");
             System.out.println("[8] - Criar publicacao");
             System.out.println("[9] - Criar objetos iniciais");
+            System.out.println("[10] - Adicionar etiqueta em publicacao");
             System.out.println("[99] - Encerrar programa");
             System.out.print("Informe sua escolha: ");
             menuEscolha = sc.nextInt();
@@ -182,6 +185,40 @@ public class Main {
                     PublicacaoPublica pp = criardorObjetos.criarPublicacaoPublica(new ArrayList<Usuario>(), PropriedadesPerfil.PUBLICACAO);
                     Produto prod = criardorObjetos.criarProduto("Agua", 20.5f, new UsuarioComum("Richard", "sdfa@gmail.com", "23423", "2000-01-01"));
                     System.out.println("\nObjetos criados com sucesso!");
+                    break;
+                case 10:
+                    System.out.println("\n--- Etiquetas ---");
+                    System.out.println("[1] - Curti");
+                    System.out.println("[2] - Amei");
+                    System.out.println("[3] - Triste");
+                    System.out.println("[4] - Feliz");
+                    System.out.println("[5] - Engracado");
+                    System.out.print("Selecione a etiqueta que deja adicionar na publicacao: ");
+                    int etiquetaId = sc.nextInt();
+                    sc.nextLine();
+
+                    switch (etiquetaId) {
+                        case 1:
+                            publicacaoTeste.setEtiqueta(FabricaEtiquetas.get("Curti"));
+                            break;
+                        case 2:
+                            publicacaoTeste.setEtiqueta(FabricaEtiquetas.get("Amei"));
+                            break;
+                        case 3:
+                            publicacaoTeste.setEtiqueta(FabricaEtiquetas.get("Triste"));
+                            break;
+                        case 4:
+                            publicacaoTeste.setEtiqueta(FabricaEtiquetas.get("Feliz"));
+                            break;
+                        case 5:
+                            publicacaoTeste.setEtiqueta(FabricaEtiquetas.get("Engracado"));
+                            break;
+                    }
+
+                    System.out.println("\nEtiquetas adicionadas na publicacao:");
+                    for (Etiqueta e : publicacaoTeste.getEtiquetas()) {
+                        System.out.println(e.getEtiqueta() + " - Endereco de memoria: " + e);
+                    }
                     break;
                 case 99:
                     System.out.println("\nFinalizando o programa...");
